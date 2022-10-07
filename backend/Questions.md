@@ -1,9 +1,20 @@
-## Comment fermer le serveur pour le relancer ?
+## Dossier frontend
+sudo npm install // Installer le server
+    > création du fichier package.json dans le frontend dans lequel seront enregistrés les détails de tous les packages 
+npm start ou npm run start
 
-## Pourquoi mes requettes dans Talend API ne sont pas directement visible ?
+## Dossier backend
+npm init  // Initialisé le server Node
+    > Création du dossier node_modules
 
-## Comment vider le cach du server
+sudo npm install -g nodemon // Installation de nodemon
 
+
+npm install express
+
+npm install helmet
+
+node server
 
 
 ### Note
