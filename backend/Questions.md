@@ -28,6 +28,10 @@ endpoint = route
 
 
 
-//////
+////// 
+
 Routeur = logique de routine
-Controlleur = logique métier
+Controlleur = logique métier de nos routes
+
+
+Authentification à notre API
