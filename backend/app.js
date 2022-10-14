@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 
+const router = express.Router();
 
 const app = express();
 
@@ -38,39 +39,39 @@ app.use((req, res, next) => {
 // Intercepté les requetes Post
 // Créer une routes pour votre application
 // Le front-end peut effectuer des appels vers l'application en toute sécurité.
-app.post('/api/stuff', (req, res, next) => {
-   console.log(req.body); // contenu du Corp de la requete
-   res.status(201).json({ // Donner une réponse sinon la requete plante
-     message: 'Objet créé !'
-   });
- });
+// app.post('/api/stuff', (req, res, next) => {
+//    console.log(req.body); // contenu du Corp de la requete
+//    res.status(201).json({ // Donner une réponse sinon la requete plante
+//      message: 'Objet créé !'
+//    });
+//  });
 
 
 // app.use((req, res) => {
 //    res.json({ message: 'Votre requête a bien été reçue !!!' }); 
 // });
 
-app.get('/api/stuff', (req, res, next) => {
-   const stuff = [
-      {
-      _id: '1234',
-      title: 'Mon titre',
-      description: 'Mes informations',
-      imageUrl: 'http',
-      price: 4900,
-      userid: 'userid'
-      },
-      {
-         _id: '12345',
-         title: 'Mon titre',
-         description: 'Mes informations',
-         imageUrl: 'http',
-         price: 4900,
-         userid: 'userid'
-         }
-   ];
-   res.status(200).json(stuff);
-})
+// app.get('/api/stuff', (req, res, next) => {
+//    const stuff = [
+//       {
+//       _id: '1234',
+//       title: 'Mon titre',
+//       description: 'Mes informations',
+//       imageUrl: 'http',
+//       price: 3900,
+//       userid: 'userid'
+//       },
+//       {
+//          _id: '12345',
+//          title: 'Mon titre',
+//          description: 'Mes informations',
+//          imageUrl: 'http',
+//          price: 4900,
+//          userid: 'userid'
+//          }
+//    ];
+//    res.status(200).json(stuff);
+// })
 
 
 
@@ -87,7 +88,7 @@ mongoose.connect('mongodb+srv://claudie:OpenClassRooms@cluster0.bsal5sf.mongodb.
 // Création d'une instance du modèle Thing
   app.post('/api/stuff', (req, res, next) => {
    delete req.body._id;
-   const thing = new Thing({
+   const thing = new Thing({ // nouvelle instance avec les éléments reçus
      ...req.body
    });
    thing.save() // Enregistre dans le BD > Envoie une Promise
@@ -97,17 +98,17 @@ mongoose.connect('mongodb+srv://claudie:OpenClassRooms@cluster0.bsal5sf.mongodb.
 
 
  // Implémentation de la route GET
- app.use('/api/stuff', (req, res, next) => {
+ app.get('/api/stuff', (req, res, next) => {
    Thing.find()  // Retourne tous les modèles Things 
      .then(things => res.status(200).json(things)) // Renvoie un tableau contenant tous les Things
      .catch(error => res.status(400).json({ error })); // Renvoie un tableau d'erreur
  });
 
-// Implémentation de la route POST
+// Implémentation de la route GET
  app.get('/api/stuff/:id', (req, res, next) => {
    Thing.findOne({ _id: req.params.id }) // findOne = Trouver un seule object
                                          // Route dynamique, accessible en tant que paramètre 
-     .then(thing => res.status(200).json(thing))
+     .then(thing => res.status(200).json(thing)) // Renvoie un tableau contenant l'élément res Things
      .catch(error => res.status(404).json({ error })); // Renvoie un tableau d'erreur au front-end
  });
 
@@ -127,7 +128,7 @@ mongoose.connect('mongodb+srv://claudie:OpenClassRooms@cluster0.bsal5sf.mongodb.
 
 
 
-//EXERCICE QUIZ 2
+//// EXERCICE QUIZ 2 ////
 
 
 // Implémentation de la route GET
@@ -145,7 +146,6 @@ app.get('/api/products/:id', (req, res, next) => {
     .catch(error => res.status(404).json({ error })); // Renvoie un tableau d'erreur au front-end
 });
 
-
  // Création d'un objet existant avec le route POST
  app.post('/api/products/', (req, res, next) => {
 
@@ -158,7 +158,6 @@ app.get('/api/products/:id', (req, res, next) => {
     .then((product) => res.status(200).json({ product }))
     .catch(error => res.status(400).json({ error })); // Renvoie un tableau d'erreur au front-end
 });
-
 
  // Modification d'un objet existant avec le route PUT
  app.put('/api/products/:id', (req, res, next) => {
