@@ -26,3 +26,8 @@ C'est une fonction dans une application Express qui recoit la req et la res qui 
 endpoint = route
 
 
+
+
+//////
+Routeur = logique de routine
+Controlleur = logique métier
