@@ -1,12 +1,16 @@
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken');
+
 const User = require('../models/User');
+
+
 
 // Middleware pour l'enregistrement de nouveaux utilisateurs
 exports.signup = (req, res, next) => {
     // hacher le mdp des utilisateurs pour les enregistrer de manière sécurisée dans la BDD
     // méthode  hash() 
-    bcrupt.hash(req.body.password, 10)
+    bcrypt.hash(req.body.password, 10)
     .then(hash => {
         const user = new User({
             email: req.body.email,
@@ -34,7 +38,11 @@ exports.login = (req, res, next) => {
                     } else { // MDP valide
                         res.status(200).json({
                             userId: user._id,
-                            token: 'TOKEN'
+                            token: jwt.sign(
+                                { userId: user._id },
+                                'RANDOM_TOKEN_SECRET',
+                                { expiresIn: '24h' }
+                            )
                         });
                     }
                     
