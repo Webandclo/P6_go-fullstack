@@ -30,6 +30,10 @@ npm install --save mongoose-unique-validator
 
 npm install bcrypt
 
+npm install jsonwebtoken
+
+npm install multer
+
 ### Note
 
 Middleware
@@ -48,3 +52,9 @@ Controlleur = logique métier de nos routes
 
 
 Authentification à notre API
+
+
+
+https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466605-configurez-le-middleware-dauthentification
+
+>>> Pas fait
