@@ -2,8 +2,9 @@
 //// Déporter les routes ////
 
 const express = require('express');
-
-const router = express.Router();
+const router = express.Router(); 
+// > Permet de créer des routeurs séparés pour chaque route principale de votre application
+// Puis d'y enregistrer des routes individuelles.
 
 // Importation du fichier pour utiliser le modèle dans l'application
 const Thing = require('../models/Thing');

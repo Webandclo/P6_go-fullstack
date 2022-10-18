@@ -17,6 +17,19 @@ npm install helmet
 node server
 
 
+
+### Installation de bcrypt
+// Dans le backend
+C'est package de cryptage qui s'installer avec npm.
+
+npm install mongoose-unique-validator
+npm install --save mongoose-unique-validator
+
+// Création d'un router spécifique pour l'authentification
+
+
+npm install bcrypt
+
 ### Note
 
 Middleware
