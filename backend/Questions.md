@@ -32,6 +32,8 @@ npm install bcrypt
 
 npm install jsonwebtoken
 
+
+// Un package qui nous permet de gérer les fichiers entrants dans les requêtes HTTP.
 npm install multer
 
 ### Note
@@ -53,6 +55,8 @@ Controlleur = logique métier de nos routes
 
 Authentification à notre API
 
+
+CRUD (Create, Read, Update and Delete, soit Créer, Lire, Modifier et Supprimer).
 
 
 https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466605-configurez-le-middleware-dauthentification

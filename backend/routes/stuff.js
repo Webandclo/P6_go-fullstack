@@ -2,11 +2,28 @@
 //// Déporter les routes ////
 
 const express = require('express');
-const auth = require('auth');
+const auth = require('../middleware/auth');
+const multer = require('../middleware/multer-config');
+const stuffCtrl = require('../controllers/stuff');
 
 const router = express.Router(); 
 // > Permet de créer des routeurs séparés pour chaque route principale de votre application
 // Puis d'y enregistrer des routes individuelles.
+
+//
+
+
+router.get('/', auth, stuffCtrl.getAllThings);
+router.post('/', auth, multer, stuffCtrl.createThing);
+router.get('/:id', auth, stuffCtrl.getOneThing);
+router.put('/:id', auth, multer, stuffCtrl.modifyThing);
+router.delete('/:id', auth, stuffCtrl.deleteThing);
+
+module.exports = router;
+
+--
+
+
 
 
 

@@ -11,6 +11,8 @@ const router = express.Router();
 
 const app = express();
 
+const path = require('path');
+
 
 // Importation du fichier pour utiliser le modèle dans l'application
 // const Thing = require('./models/Thing');
@@ -52,5 +54,6 @@ app.use(bodyParser.json());
 // On enregistre les routeurs dans l'API
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
