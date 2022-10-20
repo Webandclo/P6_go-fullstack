@@ -5,6 +5,32 @@
 const Thing = require('../models/thing');
 
 ///////////
+
+
+
+exports.getAllThings = (req, res, next) => {
+  Thing.find()  // Retourne tous les modèles Things 
+      .then(things => res.status(200).json(things)) // Renvoie un tableau contenant tous les Things
+      .catch(error => res.status(400).json({ error })); // Renvoie un tableau d'erreur
+
+};
+
+
+
+
+exports.getOneThing = (req, res, next) => {
+  Thing.findOne({ _id: req.params.id }) // findOne = Trouver un seule object
+                                          // Route dynamique, accessible en tant que paramètre 
+      .then(thing => res.status(200).json(thing)) // Renvoie un tableau contenant l'élément res Things
+      .catch(error => res.status(404).json({ error })); // Renvoie un tableau d'erreur au front-end
+
+};
+
+
+
+
+
+
 // Créer un objet
 exports.createThing = (req, res, next) => {
   // JSON.parse() > transforme un objet stringifié en Object JavaScript exploitable.

@@ -10,7 +10,7 @@ const router = express.Router();
 // > Permet de créer des routeurs séparés pour chaque route principale de votre application
 // Puis d'y enregistrer des routes individuelles.
 
-//
+//s
 
 
 router.get('/', auth, stuffCtrl.getAllThings);
@@ -19,16 +19,16 @@ router.get('/:id', auth, stuffCtrl.getOneThing);
 router.put('/:id', auth, multer, stuffCtrl.modifyThing);
 router.delete('/:id', auth, stuffCtrl.deleteThing);
 
-module.exports = router;
-
---
 
 
 
 
+
+
+//////////////////////////code du début sans organisation du code///////////////////////
 
 // Importation du fichier pour utiliser le modèle dans l'application
-const Thing = require('../models/Thing');
+/*const Thing = require('../models/Thing');
 
 
 
@@ -73,5 +73,5 @@ router.post('/', (req, res, next) => {
       .catch(error => res.status(400).json({ error }));
   });
 
-
+*/
 module.exports = router;
